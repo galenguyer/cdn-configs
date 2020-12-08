@@ -1,28 +1,28 @@
-resource "azurerm_virtual_network" "cdn-eastus-vnet" {
- name                = "cdn-eastus-vnet"
+resource "azurerm_virtual_network" "cdn-westus2-vnet" {
+ name                = "cdn-westus2-vnet"
  address_space       = ["10.0.0.0/16"]
- location            = "East US"
+ location            = "West US 2"
  resource_group_name = azurerm_resource_group.cdn.name
 }
 
-resource "azurerm_subnet" "cdn-eastus-subnet" {
- name                 = "cdn-eastus-subnet"
+resource "azurerm_subnet" "cdn-westus2-subnet" {
+ name                 = "cdn-westus2-subnet"
  resource_group_name  = azurerm_resource_group.cdn.name
- virtual_network_name = azurerm_virtual_network.cdn-eastus-vnet.name
+ virtual_network_name = azurerm_virtual_network.cdn-westus2-vnet.name
  address_prefixes       = ["10.0.2.0/24"]
 }
 
-resource "azurerm_public_ip" "cdn-eastus-01-ip" {
- name                         = "cdn-eastus-01-ip"
- location                     = "East US"
+resource "azurerm_public_ip" "cdn-westus2-01-ip" {
+ name                         = "cdn-westus2-01-ip"
+ location                     = "West US 2"
  resource_group_name          = azurerm_resource_group.cdn.name
  allocation_method            = "Static"
  domain_name_label            = "cdn-galenguyer-01"
 }
 
-resource "azurerm_network_security_group" "cdn-eastus-01-nsg" {
-    name                = "cdn-eastus-01-nsg"
-    location            = "eastus"
+resource "azurerm_network_security_group" "cdn-westus2-01-nsg" {
+    name                = "cdn-westus2-01-nsg"
+    location            = "westus2"
     resource_group_name = azurerm_resource_group.cdn.name
 
     security_rule {
@@ -60,29 +60,29 @@ resource "azurerm_network_security_group" "cdn-eastus-01-nsg" {
     }
 }
 
-resource "azurerm_network_interface" "cdn-eastus-01-nic" {
-    name                        = "cdn-eastus-01-nic"
-    location                    = "eastus"
+resource "azurerm_network_interface" "cdn-westus2-01-nic" {
+    name                        = "cdn-westus2-01-nic"
+    location                    = "westus2"
     resource_group_name         = azurerm_resource_group.cdn.name
 
     ip_configuration {
-        name                          = "cdn-eastus-01-nic-config"
-        subnet_id                     = azurerm_subnet.cdn-eastus-subnet.id
+        name                          = "cdn-westus2-01-nic-config"
+        subnet_id                     = azurerm_subnet.cdn-westus2-subnet.id
         private_ip_address_allocation = "Dynamic"
-        public_ip_address_id          = azurerm_public_ip.cdn-eastus-01-ip.id
+        public_ip_address_id          = azurerm_public_ip.cdn-westus2-01-ip.id
     }
 }
 
-resource "azurerm_network_interface_security_group_association" "cdn-eastus-01-nic-nsg-association" {
-    network_interface_id      = azurerm_network_interface.cdn-eastus-01-nic.id
-    network_security_group_id = azurerm_network_security_group.cdn-eastus-01-nsg.id
+resource "azurerm_network_interface_security_group_association" "cdn-westus2-01-nic-nsg-association" {
+    network_interface_id      = azurerm_network_interface.cdn-westus2-01-nic.id
+    network_security_group_id = azurerm_network_security_group.cdn-westus2-01-nsg.id
 }
 
-resource "azurerm_linux_virtual_machine" "cdn-eastus-01" {
-    name                  = "cdn-eastus-01"
-    location              = "eastus"
+resource "azurerm_linux_virtual_machine" "cdn-westus2-01" {
+    name                  = "cdn-westus2-01"
+    location              = "westus2"
     resource_group_name   = azurerm_resource_group.cdn.name
-    network_interface_ids = [azurerm_network_interface.cdn-eastus-01-nic.id]
+    network_interface_ids = [azurerm_network_interface.cdn-westus2-01-nic.id]
     size                  = "Standard_B1ls"
 
     os_disk {
