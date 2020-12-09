@@ -1,0 +1,23 @@
+---
+- name: update and install packages
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: update apt cache
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: install nginx
+    apt:
+      name: nginx
+      state: present
+
+  - name: clean apt cache
+    apt:
+      autoclean: yes
+
+  - name: remove unused packages
+    apt:
+      autoremove: yes
