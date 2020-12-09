@@ -86,7 +86,8 @@ resource "azurerm_linux_virtual_machine" "cdn-uksouth-01" {
     size                  = "Standard_B1s"
 
     os_disk {
-        caching           = "ReadWrite"
+        name                 = "cdn-uksouth-01-osdisk"
+        caching              = "ReadWrite"
         storage_account_type = "Standard_LRS"
     }
 
