@@ -83,7 +83,7 @@ resource "azurerm_linux_virtual_machine" "cdn-uksouth-01" {
     location              = "uksouth"
     resource_group_name   = azurerm_resource_group.cdn.name
     network_interface_ids = [azurerm_network_interface.cdn-uksouth-01-nic.id]
-    size                  = "Standard_B1ls"
+    size                  = "Standard_B1s"
 
     os_disk {
         caching           = "ReadWrite"
