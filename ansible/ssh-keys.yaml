@@ -1,0 +1,19 @@
+---
+- name: update authorized_keys
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: update authorized_keys for chef
+    ansible.posix.authorized_key:
+      user: chef
+      state: present
+      key: https://github.com/galenguyer.keys
+      exclusive: True
+
+  - name: update authorized_keys for root
+    ansible.posix.authorized_key:
+      user: root
+      state: present
+      key: https://github.com/galenguyer.keys
+      exclusive: True
