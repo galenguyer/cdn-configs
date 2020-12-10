@@ -106,3 +106,11 @@ resource "azurerm_linux_virtual_machine" "cdn-eastus-01" {
         public_key = file("~/.ssh/id_rsa.pub")
     }
 }
+
+resource "azurerm_traffic_manager_endpoint" "cdn-eastus-01" {
+  name                = "cdn-eastus-01"
+  resource_group_name = azurerm_resource_group.cdn.name
+  profile_name        = azurerm_traffic_manager_profile.cdn-galenguyer.name
+  type                = "azureEndpoints"
+  target_resource_id  = azurerm_public_ip.cdn-eastus-01-ip.id
+}

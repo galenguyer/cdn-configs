@@ -106,3 +106,12 @@ resource "azurerm_linux_virtual_machine" "cdn-westus2-01" {
         public_key = file("~/.ssh/id_rsa.pub")
     }
 }
+
+resource "azurerm_traffic_manager_endpoint" "cdn-westus2-01" {
+  name                = "cdn-westus2-01"
+  resource_group_name = azurerm_resource_group.cdn.name
+  profile_name        = azurerm_traffic_manager_profile.cdn-galenguyer.name
+  type                = "azureEndpoints"
+  target_resource_id  = azurerm_public_ip.cdn-westus2-01-ip.id
+}
+
