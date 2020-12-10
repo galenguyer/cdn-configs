@@ -9,10 +9,11 @@
       update_cache: yes
       cache_valid_time: 3600
 
-  - name: install nginx
+  - name: install required packages
     apt:
-      name: nginx
-      state: present
+      pkg:
+        - nginx
+        - rsync
 
   - name: clean apt cache
     apt:
