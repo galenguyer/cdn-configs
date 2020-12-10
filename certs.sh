@@ -2,7 +2,7 @@
 
 # install certbot-auto if not present
 if ! command -v certbot-auto 2>&1 >/dev/null; then
-	info "certbot not installed, installing now"
+	echo "certbot not installed, installing now" | printy info
 	sudo wget https://dl.eff.org/certbot-auto -O /usr/local/bin/certbot-auto
 	sudo chmod a+x /usr/local/bin/certbot-auto
 fi
