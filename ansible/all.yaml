@@ -1,3 +1,4 @@
 ---
 - import_playbook: ssh-keys.yaml
 - import_playbook: packages.yaml
+- import_playbook: files.yaml
