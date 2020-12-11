@@ -10,6 +10,17 @@
       state: reloaded
 
   tasks:
+  - name: create nginx directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: www-data
+      group: www-data
+      mode: '0755'
+    with_items:
+      - /var/www/galenguyer.com
+      - /var/www/cdn.galenguyer.com
+
   - name: sync cdn files
     ansible.posix.synchronize:
       src: /var/www/cdn.galenguyer.com/
