@@ -18,14 +18,14 @@ resource "azurerm_resource_group" "cdn" {
   location = "East US"
 }
 
-resource "azurerm_traffic_manager_profile" "cdn-galenguyer" {
-  name                = "cdn-galenguyer"
+resource "azurerm_traffic_manager_profile" "hg80" {
+  name                = "hg80"
   resource_group_name = azurerm_resource_group.cdn.name
 
   traffic_routing_method = "Performance"
 
   dns_config {
-    relative_name = "galenguyer-cdn"
+    relative_name = "hg80"
     ttl           = 60
   }
 

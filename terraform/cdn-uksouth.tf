@@ -110,7 +110,7 @@ resource "azurerm_linux_virtual_machine" "cdn-uksouth-01" {
 resource "azurerm_traffic_manager_endpoint" "cdn-uksouth-01" {
   name                = "cdn-uksouth-01"
   resource_group_name = azurerm_resource_group.cdn.name
-  profile_name        = azurerm_traffic_manager_profile.cdn-galenguyer.name
+  profile_name        = azurerm_traffic_manager_profile.hg80.name
   type                = "azureEndpoints"
   target_resource_id  = azurerm_public_ip.cdn-uksouth-01-ip.id
 }
