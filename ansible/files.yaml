@@ -20,11 +20,19 @@
     with_items:
       - /var/www/galenguyer.com
       - /var/www/cdn.galenguyer.com
+      - /var/www/packages.galenguyer.com
 
   - name: sync cdn files
     ansible.posix.synchronize:
       src: /var/www/cdn.galenguyer.com/
       dest: /var/www/cdn.galenguyer.com/
+      delete: yes
+      recursive: yes
+
+  - name: sync packages files
+    ansible.posix.synchronize:
+      src: /var/www/packages.galenguyer.com/
+      dest: /var/www/packages.galenguyer.com/
       delete: yes
       recursive: yes
 
