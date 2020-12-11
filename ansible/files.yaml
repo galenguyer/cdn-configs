@@ -14,9 +14,6 @@
     file:
       path: "{{ item }}"
       state: directory
-      owner: www-data
-      group: www-data
-      mode: '0755'
     with_items:
       - /var/www/galenguyer.com
       - /var/www/cdn.galenguyer.com
