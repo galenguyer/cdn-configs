@@ -1,0 +1,19 @@
+---
+- name: sync homepage files for build job
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: create nginx directories
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+      - /var/www/galenguyer.com
+
+  - name: sync homepage files
+    ansible.posix.synchronize:
+      src: ../galenguyer.com/public/
+      dest: /var/www/galenguyer.com/
+      delete: yes
+      recursive: yes
