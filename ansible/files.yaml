@@ -19,33 +19,17 @@
       - /var/www/cdn.galenguyer.com
       - /var/www/packages.galenguyer.com
 
-  - name: sync cdn files
+  - name: sync static files
     ansible.posix.synchronize:
-      src: /var/www/cdn.galenguyer.com/
-      dest: /var/www/cdn.galenguyer.com/
+      src: "{{ item }}"
+      dest: "{{ item }}"
       delete: yes
       recursive: yes
-
-  - name: sync packages files
-    ansible.posix.synchronize:
-      src: /var/www/packages.galenguyer.com/
-      dest: /var/www/packages.galenguyer.com/
-      delete: yes
-      recursive: yes
-
-  - name: sync ip files
-    ansible.posix.synchronize:
-      src: /var/www/ip.nyaa.gay/
-      dest: /var/www/ip.nyaa.gay/
-      delete: yes
-      recursive: yes
-
-  - name: sync homepage files
-    ansible.posix.synchronize:
-      src: /var/www/galenguyer.com/
-      dest: /var/www/galenguyer.com/
-      delete: yes
-      recursive: yes
+    with_items:
+      - /var/www/galenguyer.com/
+      - /var/www/cdn.galenguyer.com/
+      - /var/www/packages.galenguyer.com/
+      - /var/www/ip.nyaa.gay/
 
   - name: sync letsencrypt certs
     ansible.posix.synchronize:
