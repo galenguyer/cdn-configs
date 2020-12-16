@@ -38,6 +38,7 @@
       pkg:
         - edgeinx-mainline-quiche
         - rsync
+        - php-fpm
 
   - name: clean apt cache
     apt:

@@ -17,3 +17,13 @@ sudo certbot-auto certonly \
 	--agree-tos \
 	-d 'galenguyer.com' \
 	-d '*.galenguyer.com'
+
+sudo certbot-auto certonly \
+	--server https://acme-v02.api.letsencrypt.org/directory \
+	--manual \
+	--preferred-challenges dns \
+	-m certbot@galenguyer.com \
+	--rsa-key-size 4096 \
+	--agree-tos \
+	-d 'nyaa.gay' \
+	-d '*.nyaa.gay'

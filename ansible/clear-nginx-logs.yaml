@@ -1,0 +1,19 @@
+---
+- name: sync files from host to nodes
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: delete log files
+    file:
+      path: "{{ item }}"
+      state: absent
+    with_items:
+      - /var/log/nginx/access.log
+      - /var/log/nginx/access.json
+      - /var/log/nginx/error.log
+
+  - name: reload nginx
+    systemd:
+      name: nginx
+      state: reloaded

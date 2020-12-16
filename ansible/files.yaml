@@ -33,6 +33,13 @@
       delete: yes
       recursive: yes
 
+  - name: sync ip files
+    ansible.posix.synchronize:
+      src: /var/www/ip.nyaa.gay/
+      dest: /var/www/ip.nyaa.gay/
+      delete: yes
+      recursive: yes
+
   - name: sync homepage files
     ansible.posix.synchronize:
       src: /var/www/galenguyer.com/
