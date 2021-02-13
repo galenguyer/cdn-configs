@@ -11,9 +11,7 @@
     with_items:
       - /var/www/galenguyer.com
 
-  - name: sync homepage files
-    ansible.posix.synchronize:
-      src: ../galenguyer.com/public/
+  - name: fetch from git
+    ansible.builtin.git:
+      repo: https://github.com/galenguyer/galenguyer.github.io
       dest: /var/www/galenguyer.com/
-      delete: yes
-      recursive: yes

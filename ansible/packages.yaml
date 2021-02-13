@@ -16,7 +16,7 @@
 
   - name: add personal gpg key to apt
     apt_key:
-      url: https://gpg.galenguyer.com
+      url: https://pgp.galenguyer.com
       state: present
 
   - name: add personal debian package archive
@@ -39,6 +39,7 @@
         - edgeinx-mainline-quiche
         - rsync
         - php-fpm
+        - git
 
   - name: clean apt cache
     apt:

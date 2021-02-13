@@ -15,7 +15,6 @@
       path: "{{ item }}"
       state: directory
     with_items:
-      - /var/www/galenguyer.com
       - /var/www/cdn.galenguyer.com
       - /var/www/packages.galenguyer.com
 
@@ -26,7 +25,6 @@
       delete: yes
       recursive: yes
     with_items:
-      - /var/www/galenguyer.com/
       - /var/www/cdn.galenguyer.com/
       - /var/www/packages.galenguyer.com/
       - /var/www/ip.nyaa.gay/
