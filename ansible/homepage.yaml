@@ -13,5 +13,5 @@
 
   - name: fetch from git
     ansible.builtin.git:
-      repo: https://github.com/galenguyer/galenguyer.github.io
+      repo: https://github.com/galenguyer/galenguyer.com
       dest: /var/www/galenguyer.com/
