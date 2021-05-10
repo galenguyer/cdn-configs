@@ -9,34 +9,10 @@
       update_cache: yes
       cache_valid_time: 3600
 
-  - name: ensure gnupg2 is installed
-    apt:
-      name: gnupg2
-      state: present
-
-  - name: add personal gpg key to apt
-    apt_key:
-      url: https://pgp.galenguyer.com
-      state: present
-
-  - name: add personal debian package archive
-    apt_repository:
-      repo: deb https://packages.galenguyer.com/debian ./
-      state: present
-
-  - name: update apt cache
-    apt:
-      update_cache: yes
-
-  - name: ensure nginx is not installed
-    apt:
-      name: nginx
-      state: absent
-
   - name: install required packages
     apt:
       pkg:
-        - edgeinx-mainline-quiche
+        - nginx
         - rsync
         - php-fpm
         - git

@@ -16,7 +16,7 @@
       state: directory
     with_items:
       - /var/www/cdn.galenguyer.com
-      - /var/www/packages.galenguyer.com
+      - /var/www/galenguyer.com
 
   - name: sync static files
     ansible.posix.synchronize:
@@ -26,8 +26,7 @@
       recursive: yes
     with_items:
       - /var/www/cdn.galenguyer.com/
-      - /var/www/packages.galenguyer.com/
-      - /var/www/ip.nyaa.gay/
+      - /var/www/galenguyer.com/
 
   - name: sync letsencrypt certs
     ansible.posix.synchronize:
