@@ -10,7 +10,6 @@
 
 # Ex 1: Ungrouped hosts, specify before any group headers.
 
-cdn-galenguyer-01.eastus.cloudapp.azure.com
 cdn-galenguyer-01.westus2.cloudapp.azure.com
 cdn-galenguyer-01.uksouth.cloudapp.azure.com
 cdn-galenguyer-01.canadacentral.cloudapp.azure.com
